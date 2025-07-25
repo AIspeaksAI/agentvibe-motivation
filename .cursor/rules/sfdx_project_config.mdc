@@ -1,0 +1,13 @@
+---
+description: "Best practices for configuring the sfdx-project.json file for a modular 2GP application."
+globs:
+  - "**/sfdx-project.json"
+---
+
+# sfdx-project.json Configuration
+
+- **Package Directories**: Define a separate package directory for each modular package in your application. [cite_start]One directory must be marked as `"default": true`[cite: 11239].
+- **Dependencies**: For any directory that represents a package with dependencies, define a `dependencies` array. List dependencies in installation order. [cite_start]Use the `LATEST` version keyword for development and `RELEASED` for promotion[cite: 9775, 9777].
+- [cite_start]**API Version**: Pin the `sourceApiVersion` to a specific Salesforce release version (e.g., "61.0") to ensure consistent behavior across all developer and CI environments[cite: 11295].
+- [cite_start]**Scripts**: If using post-install or uninstall scripts, define them with the `postInstallScript` and `uninstallScript` properties[cite: 15431].
+- [cite_start]**URLs**: Use `releaseNotesUrl` and `postInstallUrl` to provide documentation to your users upon installation[cite: 15425].

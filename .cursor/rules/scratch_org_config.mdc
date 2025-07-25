@@ -1,0 +1,15 @@
+---
+description: "Guidelines for creating the scratch org definition file (project-scratch-def.json)."
+globs:
+  - "**/project-scratch-def.json"
+---
+
+# Scratch Org Definition Best Practices
+
+- [cite_start]The scratch org definition file is the blueprint for all temporary development and testing environments[cite: 12132].
+- [cite_start]It **must** define the `edition` and any `features` or `settings` the packaged metadata depends on[cite: 12135, 12136, 12137].
+- **Org Shape**: To accurately mimic a production org's configuration, you can capture its shape and reference the 15-character `sourceOrg` ID instead of manually listing features. [cite_start]This is a recommended best practice for complex orgs[cite: 13860, 13935].
+- **Required Features**:
+    - [cite_start]For Agentforce: Must include `Einstein1AIPlatform` and `einsteinGptSettings`[cite: 8456, 8457].
+    - [cite_start]For Experience Cloud sites: Must include `Communities` and the `communitiesSettings` setting[cite: 12389, 12390].
+    - For Data Cloud: Requires a PBO Dev Hub and enablement from Salesforce Support. [cite_start]Add the `CustomerDataPlatform` and `CustomerDataPlatformLite` features[cite: 13349, 13353].

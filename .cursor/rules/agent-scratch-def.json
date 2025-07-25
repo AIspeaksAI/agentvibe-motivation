@@ -1,0 +1,10 @@
+{
+  "orgName": "Agentforce Development",
+  "edition": "Enterprise",
+  "features": ["Einstein1AIPlatform"],
+  "settings": {
+    "einsteinGptSettings": {
+      "enableEinsteinGptPlatform": true
+    }
+  }
+} 

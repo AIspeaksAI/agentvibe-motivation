@@ -1,0 +1,13 @@
+---
+description: "Defines core principles for Salesforce AppExchange development using Salesforce DX and a source-driven model."
+alwaysApply: true
+---
+
+# Salesforce AppExchange Development Rules
+
+- **Source-Driven Development**: You must follow a source-driven development model. [cite_start]The version control system (VCS), such as Git, is the single source of truth for all metadata[cite: 8252, 10037]. The org is not the source of truth.
+- [cite_start]**Salesforce DX Tooling**: All development must use Salesforce Developer Experience (DX) tooling, especially the Salesforce CLI[cite: 8270, 8233, 10038].
+- **Development Environment**:
+    - [cite_start]The primary development and testing environments are temporary, disposable **scratch orgs**[cite: 8271, 8384, 12004].
+    - All scratch orgs and packages must be managed from a central **Dev Hub**. [cite_start]This Dev Hub should be the Partner Business Org (PBO) for any official AppExchange application[cite: 8273, 10168].
+- [cite_start]**Project Structure**: All source code must be organized in a Salesforce DX project structure, defined by the `sfdx-project.json` configuration file[cite: 10453].

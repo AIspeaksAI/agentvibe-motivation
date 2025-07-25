@@ -1,0 +1,21 @@
+---
+description: "Enforces best practices for Second-Generation Managed Packaging (2GP) for AppExchange distribution."
+globs:
+  - "**/sfdx-project.json"
+---
+
+# Second-Generation Managed Packaging (2GP) Best Practices
+
+- [cite_start]**Use 2GP**: All applications intended for AppExchange distribution **must** be built using Second-Generation Managed Packages (2GP)[cite: 8233]. Do not use 1GP for new packages.
+- [cite_start]**CLI-First Operations**: All packaging operations, including creation, versioning, and promotion, must be executed via Salesforce CLI commands (e.g., `sf package create`, `sf package version create`) or automated scripts[cite: 8233, 8257].
+- **Modular Design**:
+    - [cite_start]Decompose the application into small, modular, interdependent packages based on functionality[cite: 8318, 9768].
+    - [cite_start]Declare dependencies between packages declaratively in the `dependencies` array of the `sfdx-project.json` file[cite: 8260, 9768].
+- **Namespace Strategy**:
+    - All related packages for an application should share the **same namespace**. [cite_start]This is critical for efficient code sharing[cite: 8259, 8348].
+    - [cite_start]The namespace must be linked to the Dev Hub org before creating any packages[cite: 8313, 8355].
+- **Versioning**:
+    - [cite_start]Follow the `major.minor.patch.build` versioning format[cite: 15603].
+    - [cite_start]In `sfdx-project.json`, use the `NEXT` keyword for the build number (e.g., `"1.2.0.NEXT"`) to ensure the build number is always unique and automatically incremented[cite: 15612, 15613].
+    - Always specify a package ancestor for new versions to maintain a clear upgrade path for customers. [cite_start]Use the `HIGHEST` keyword (e.g., `"ancestorVersion": "HIGHEST"`) to follow the latest released version automatically[cite: 8367, 9743].
+- **Patch Versions**: Use patch versions (`1.2.1.0`) only for critical bug fixes. [cite_start]You cannot add or remove components in a patch version[cite: 9773].

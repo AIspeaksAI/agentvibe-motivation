@@ -1,0 +1,15 @@
+---
+description: "Guidelines for writing high-quality, secure, and packageable Apex code."
+globs:
+  - "**/*.cls"
+  - "**/*.trigger"
+---
+
+# Apex Best Practices for Packaged Apps
+
+- **Test Coverage**: All Apex code must have a minimum of **75% cumulative test coverage** before a package version can be promoted to "released" for AppExchange distribution. [cite_start]Every Apex trigger must have some test coverage[cite: 8964, 9756, 15006].
+- **Code Visibility**:
+    - [cite_start]Use the `@namespaceAccessible` annotation on `public` Apex classes, methods, interfaces, and properties to allow them to be used by other packages within the **same namespace**[cite: 8259, 9726].
+    - Avoid using the `global` access modifier. [cite_start]It should only be used for code that must be exposed as a public API to subscriber orgs or packages in other namespaces[cite: 8259, 8967].
+- **Intellectual Property**: Be aware that code in a managed package is obfuscated and hidden from the subscriber, except for the signatures of `global` methods. [cite_start]This is a key IP protection feature[cite: 8967].
+- [cite_start]**Post-Install Logic**: If the package requires setup logic after installation (e.g., creating default data, calling an external system), implement the `InstallHandler` interface in an Apex class and specify it as a `postInstallScript` in `sfdx-project.json`[cite: 9748, 15431].

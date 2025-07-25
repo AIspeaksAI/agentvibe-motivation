@@ -1,0 +1,18 @@
+---
+description: "Rules for developing and packaging AI agents using Agentforce for AgentExchange."
+globs:
+  - "**/bots/*.bot-meta.xml"
+  - "**/botTemplates/*.botTemplate-meta.xml"
+  - "**/planners/*.genAiPlannerBundle-meta.xml"
+---
+
+# Agentforce and AgentExchange Development Rules
+
+- [cite_start]**Distribution Format**: AI Agents are distributed on the AgentExchange as **Agent Templates**[cite: 9713].
+- **Development Workflow**:
+    1.  Develop and test the agent within a namespaced scratch org. [cite_start]The scratch org must be enabled for Agentforce[cite: 9713].
+    2.  [cite_start]Retrieve the agent's constituent metadata (`Bot`, `BotVersion`, `GenAiPlannerBundle`) into the local SFDX project[cite: 9714].
+    3.  [cite_start]Generate the `BotTemplate` metadata file using the `sf agent generate template` CLI command[cite: 9714].
+    4.  When packaging, include the generated `BotTemplate` and its `GenAiPlannerBundle`. [cite_start]**Do not** package the original `Bot` or `BotVersion` files[cite: 9717].
+- [cite_start]**Packageable Components**: The primary metadata types for Agentforce are `Agent Action` (GenAiFunction), `Agent Topic` (GenAiPlugin), `Prompt Template` (GenAiPromptTemplate), and `Agent Template` (BotTemplate, GenAiPlannerBundle)[cite: 9712, 9713].
+- [cite_start]**Scratch Org Configuration**: Any scratch org used for Agentforce development **must** include the `Einstein1AIPlatform` feature and the corresponding `einsteinGptSettings` in its definition file[cite: 8456, 8457]. Reference the template below.
