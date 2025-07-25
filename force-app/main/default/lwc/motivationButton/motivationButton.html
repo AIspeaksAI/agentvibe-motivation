@@ -6,8 +6,17 @@
                 variant="brand" 
                 label="Motivate Me" 
                 onclick={handleMotivationClick}
-                class="slds-m-bottom_medium">
+                class="motivation-button slds-m-bottom_medium">
             </lightning-button>
+            
+            <!-- Confetti Container -->
+            <template if:true={showConfetti}>
+                <div class="confetti-container">
+                    <template for:each={confettiPieces} for:item="item">
+                        <div key={item.id} class="confetti" style={item.style}></div>
+                    </template>
+                </div>
+            </template>
             
             <!-- Message Display Area -->
             <div class="slds-box slds-theme_shade slds-m-top_small">
