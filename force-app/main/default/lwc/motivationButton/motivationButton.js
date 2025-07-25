@@ -1,58 +1,79 @@
-import { LightningElement, track } from 'lwc';
-import getMotivationMessage from '@salesforce/apex/MotivationController.getMotivationMessage';
+import { LightningElement, track } from "lwc";
+import getMotivationMessage from "@salesforce/apex/MotivationController.getMotivationMessage";
+import { loadScript } from "lightning/platformResourceLoader";
+import CANVAS_CONFETTI from "@salesforce/resourceUrl/canvasConfetti";
 
 export default class MotivationButton extends LightningElement {
-    @track message = '';
-    @track isLoading = false;
-    @track showConfetti = false;
-    @track confettiPieces = [];
+  @track message = "";
+  @track isLoading = false;
+  @track confettiLoaded = false;
 
-    /**
-     * Handles the motivation button click event
-     * Calls the Apex controller to get a random motivational message
-     * Triggers confetti animation
-     */
-    handleMotivationClick() {
-        this.isLoading = true;
-        this.message = ''; // Clear previous message
-        
-        // Trigger confetti animation
-        this.triggerConfetti();
-        
-        getMotivationMessage()
-            .then(result => {
-                this.message = result;
-                this.isLoading = false;
-            })
-            .catch(error => {
-                console.error('Error getting motivation message:', error);
-                this.message = 'Something went wrong, but remember: you\'ve got this! 💪';
-                this.isLoading = false;
-            });
-    }
+  /**
+   * Handles the motivation button click event
+   * Calls the Apex controller to get a random motivational message
+   * Triggers confetti animation using canvas-confetti library
+   */
+  handleMotivationClick() {
+    this.isLoading = true;
+    this.message = ""; // Clear previous message
 
-    /**
-     * Creates and triggers confetti animation
-     */
-    triggerConfetti() {
-        this.showConfetti = true;
-        this.confettiPieces = [];
-        
-        // Create confetti pieces
-        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff'];
-        const confettiCount = 50;
-        
-        for (let i = 0; i < confettiCount; i++) {
-            this.confettiPieces.push({
-                id: i,
-                style: `left: ${Math.random() * 100}%; animation-delay: ${Math.random() * 2}s; background-color: ${colors[Math.floor(Math.random() * colors.length)]};`
-            });
-        }
-        
-        // Hide confetti after animation completes
-        setTimeout(() => {
-            this.showConfetti = false;
-            this.confettiPieces = [];
-        }, 3000);
+    // Trigger confetti animation using the library
+    this.triggerConfetti();
+
+    getMotivationMessage()
+      .then((result) => {
+        this.message = result;
+        this.isLoading = false;
+      })
+      .catch((error) => {
+        console.error("Error getting motivation message:", error);
+        this.message =
+          "Something went wrong, but remember: you've got this! 💪";
+        this.isLoading = false;
+      });
+  }
+
+  /**
+   * Loads the confetti library from static resource and triggers animation
+   */
+  async triggerConfetti() {
+    try {
+      // Load confetti library if not already loaded
+      if (!this.confettiLoaded) {
+        await loadScript(this, CANVAS_CONFETTI);
+        this.confettiLoaded = true;
+      }
+
+      // Fire confetti animation
+      this.fireConfetti();
+    } catch (error) {
+      console.error("Error loading confetti library:", error);
     }
-} 
+  }
+
+  /**
+   * Fires the actual confetti animation
+   */
+  fireConfetti() {
+    // Create a burst of confetti from the center
+    window.confetti({
+      particleCount: 150,
+      spread: 90,
+      origin: { y: 0.6 }
+    });
+
+    // Add side bursts immediately for dramatic effect
+    window.confetti({
+      particleCount: 50,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 }
+    });
+    window.confetti({
+      particleCount: 50,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 }
+    });
+  }
+}

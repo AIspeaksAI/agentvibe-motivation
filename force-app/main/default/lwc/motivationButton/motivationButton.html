@@ -1,54 +1,56 @@
 <template>
-    <lightning-card title="Motivation Boost" icon-name="utility:lightning" class="motivation-card">
-        <div class="slds-p-around_medium">
-            <!-- Motivation Button -->
-            <lightning-button 
-                variant="brand" 
-                label="Motivate Me" 
-                onclick={handleMotivationClick}
-                class="motivation-button slds-m-bottom_medium">
-            </lightning-button>
-            
-            <!-- Confetti Container -->
-            <template if:true={showConfetti}>
-                <div class="confetti-container">
-                    <template for:each={confettiPieces} for:item="item">
-                        <div key={item.id} class="confetti" style={item.style}></div>
-                    </template>
-                </div>
-            </template>
-            
-            <!-- Message Display Area -->
-            <div class="slds-box slds-theme_shade slds-m-top_small">
-                <template if:true={message}>
-                    <p class="slds-text-heading_small slds-text-color_success slds-m-bottom_small">
-                        <lightning-icon 
-                            icon-name="utility:success" 
-                            size="x-small" 
-                            class="slds-m-right_x-small">
-                        </lightning-icon>
-                        From Your Future Self:
-                    </p>
-                    <p class="slds-text-body_regular slds-text-color_default motivation-message message-fade-in">
-                        {message}
-                    </p>
-                </template>
-                <template if:false={message}>
-                    <p class="slds-text-body_regular slds-text-color_weak">
-                        Click the button above to get motivated! 💪
-                    </p>
-                </template>
-            </div>
-            
-            <!-- Loading Spinner -->
-            <template if:true={isLoading}>
-                <div class="slds-is-relative slds-m-top_medium">
-                    <lightning-spinner 
-                        alternative-text="Loading motivation..." 
-                        size="small">
-                    </lightning-spinner>
-                </div>
-            </template>
+  <lightning-card
+    title="Motivation Boost"
+    icon-name="utility:lightning"
+    class="motivation-card"
+  >
+    <div class="slds-p-around_medium">
+      <!-- Motivation Button -->
+      <lightning-button
+        variant="brand"
+        label="Motivate Me"
+        onclick={handleMotivationClick}
+        class="motivation-button slds-m-bottom_medium"
+      >
+      </lightning-button>
+
+      <!-- Message Display Area -->
+      <div class="slds-box slds-theme_shade slds-m-top_small">
+        <template if:true={message}>
+          <p
+            class="slds-text-heading_small slds-text-color_success slds-m-bottom_small"
+          >
+            <lightning-icon
+              icon-name="utility:success"
+              size="x-small"
+              class="slds-m-right_x-small"
+            >
+            </lightning-icon>
+            From Your Future Self:
+          </p>
+          <p
+            class="slds-text-body_regular slds-text-color_default motivation-message message-fade-in"
+          >
+            {message}
+          </p>
+        </template>
+        <template if:false={message}>
+          <p class="slds-text-body_regular slds-text-color_weak">
+            Click the button above to get motivated! 💪
+          </p>
+        </template>
+      </div>
+
+      <!-- Loading Spinner -->
+      <template if:true={isLoading}>
+        <div class="slds-is-relative slds-m-top_medium">
+          <lightning-spinner
+            alternative-text="Loading motivation..."
+            size="small"
+          >
+          </lightning-spinner>
         </div>
-    </lightning-card>
-</template> 
+      </template>
+    </div>
+  </lightning-card>
+</template>

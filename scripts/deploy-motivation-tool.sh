@@ -21,6 +21,9 @@ echo "📦 Target org: $TARGET_ORG"
 echo "📤 Deploying Apex classes..."
 sf project deploy start --source-dir force-app/main/default/classes --target-org $TARGET_ORG
 
+echo "📤 Deploying Static Resources..."
+sf project deploy start --source-dir force-app/main/default/staticresources --target-org $TARGET_ORG
+
 echo "📤 Deploying LWC components..."
 sf project deploy start --source-dir force-app/main/default/lwc/motivationButton --target-org $TARGET_ORG
 
