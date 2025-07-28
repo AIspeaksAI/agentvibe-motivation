@@ -223,4 +223,4 @@ For issues or questions:
 
 **Built with ❤️ for sales teams everywhere**
 
-_Last updated: January 2025_
+_Last updated: July 2025_
