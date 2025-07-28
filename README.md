@@ -1,6 +1,6 @@
 # AgentVibe Motivation Tool
 
-> **Disclaimer**: This project was generated using generative AI. While the code has been reviewed and tested, please ensure it meets your specific requirements and security standards before deploying to production environments.
+> **Disclaimer**: This project was generated using generative AI. Please ensure it meets your specific requirements and security standards before deploying to production environments.
 
 A custom Lightning Web Component (LWC) for Salesforce that provides motivational messages to sales users directly on the Opportunity page. This tool helps boost morale and maintain focus on closing deals by displaying personalized motivational messages from the user's "future self."
 
@@ -222,3 +222,5 @@ For issues or questions:
 ---
 
 **Built with ❤️ for sales teams everywhere**
+
+_Last updated: January 2025_
