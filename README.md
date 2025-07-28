@@ -14,7 +14,7 @@ The AgentVibe Motivation Tool delivers a custom "Motivate Me" button within a Li
 - **Personal Touch**: Messages feel personal and relevant to opportunity work
 - **Random Selection**: Each click provides a different motivational message
 - **Professional UI**: Clean, modern interface using Salesforce Lightning Design System
-- **Celebration Effects**: Beautiful confetti animation using canvas-confetti library
+- **Celebration Effects**: Beautiful confetti animation using canvas-confetti library (pretty packaged!)
 - **Easy Integration**: Simple drag-and-drop installation on Opportunity pages
 
 ## 🏗️ Technical Architecture
